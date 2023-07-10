@@ -8,11 +8,16 @@ from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 import random
 from datetime import datetime
+from django_nextjs.render import render_nextjs_page_sync
 
 from .models import User, Quiz, Question, Score
 
 
 COLORS = ['light', 'middle', 'dark']
+
+import pkg_resources
+
+# def index(request):
 
 
 def index(request):
@@ -21,7 +26,8 @@ def index(request):
         return render(request, 'quizmaker/index.html')
     # Everyone else is prompted to sign in
     else:
-        return HttpResponseRedirect(reverse('login'))
+        return render_nextjs_page_sync(request)
+        # return HttpResponseRedirect(reverse('login'))
 
 
 @login_required
