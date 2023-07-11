@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-<>
+    <>
       <nav></nav>
       <main>{children}</main>
     </>

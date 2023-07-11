@@ -1,18 +1,22 @@
 from django.urls import path
 
-from . import views
+from .views import *
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('login', views.login_view, name='login'),
-    path('logout', views.logout_view, name='logout'),
-    path('register', views.register, name='register'),
-
+    path("", index, name="index"),
+    path("login", login_API, name="login"),
+    path("logout", logout_API, name="logout"),
+    path("register", register_API, name="register"),
+    # TODO change to /api/
     # API Routes
-    path('quiz/<int:quiz_id>', views.quiz, name='quiz'),
-    path('score/<str:category>/<int:quiz_id>', views.score, name='score'),
-    path('remove_quiz/<int:quiz_id>', views.remove_quiz, name='remove_quiz'),
-    path('quizzes/<str:category>', views.quizzes, name='quizzes'),
-    path('question/<int:question_id>', views.question, name='question'),
-    path('remove_question/<int:question_id>', views.remove_question, name='remove_question'),
+    path("quiz/<int:quiz_id>", quiz, name="quiz"),
+    path("score/<str:category>/<int:quiz_id>", score, name="score"),
+    path("remove_quiz/<int:quiz_id>", remove_quiz, name="remove_quiz"),
+    path("views/<str:category>", quizzes, name="views"),
+    path("question/<int:question_id>", question, name="question"),
+    path(
+        "remove_question/<int:question_id>",
+        remove_question,
+        name="remove_question",
+    ),
 ]
